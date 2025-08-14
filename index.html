@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live Website Visualizer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <h1>Live Website </h1>
+    </div>
+
+    <div class="controls">
+      <label class="select-wrap" title="Editor mode">
+        <span>Mode</span>
+        <select id="modeSelect">
+          <option value="single">Single HTML</option>
+          <option value="split">Split (HTML/CSS/JS)</option>
+        </select>
+      </label>
+
+      <button id="sampleBtn" class="btn">Sample</button>
+      <button id="clearBtn" class="btn">Clear</button>
+      <button id="downloadBtn" class="btn">Download</button>
+      <button id="runBtn" class="btn primary">Run ▶</button>
+
+      <div class="theme-toggle" title="Toggle theme">
+        <input id="themeSwitch" type="checkbox" />
+        <label for="themeSwitch" class="slider">
+          <span class="sun">☀️</span>
+          <span class="moon">🌙</span>
+        </label>
+      </div>
+    </div>
+  </header>
+
+  <main id="layout">
+    <!-- Left: Editors -->
+    <section id="leftPane" class="pane">
+      <div class="panel">
+        <div class="panel-header">
+          <strong>Editor</strong>
+          <span class="hint">Autosaves. Live after you stop typing.</span>
+        </div>
+
+        <!-- Single HTML editor -->
+        <div id="singleWrap">
+          <textarea id="singleHtml" spellcheck="false"
+            placeholder="Paste full HTML here (you may include &lt;style&gt; and &lt;script&gt;)."></textarea>
+        </div>
+
+        <!-- Split editors -->
+        <div id="splitWrap" style="display:none;">
+          <div class="tabs">
+            <button class="tab active" data-tab="html">HTML</button>
+            <button class="tab" data-tab="css">CSS</button>
+            <button class="tab" data-tab="js">JS</button>
+          </div>
+          <div class="editors">
+            <textarea id="htmlCode" spellcheck="false"></textarea>
+            <textarea id="cssCode" spellcheck="false" style="display:none;"></textarea>
+            <textarea id="jsCode" spellcheck="false" style="display:none;"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">
+          <strong>Console</strong>
+          <span class="hint">Logs & errors from preview</span>
+        </div>
+        <div id="console" class="console" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- Draggable divider -->
+    <div id="gutter" class="gutter" title="Drag to resize"></div>
+
+    <!-- Right: Preview -->
+    <section id="rightPane" class="pane">
+      <div class="panel fill">
+        <div class="panel-header">
+          <strong>Preview</strong>
+          <span id="status" class="hint">Idle</span>
+        </div>
+        <iframe id="preview" sandbox="allow-scripts allow-forms allow-modals allow-popups allow-same-origin"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bottombar">
+    <span>Tip: Press <kbd>Ctrl/Cmd + Enter</kbd> to run immediately.</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
