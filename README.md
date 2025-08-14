@@ -51,11 +51,6 @@ Includes a **theme toggle with smooth sliding animation** and an enhanced, moder
 2. The output area updates **automatically** whenever you make changes.
 3. Use the **toggle switch** to change between light and dark mode.
 
----
-
-## 📸 Screenshot
-
-![Live Website Visualizer Preview](screenshot.png)
 
 ---
 
